@@ -98,7 +98,7 @@ def run_git(command_args, folder=None, exception_by_error=None):
     }, **(exception_by_error or {}))
     with cd(folder):
         output = run_command(command_args, exception_by_error)
-    return output
+    return str(output)  # Convert bytes to str in Python 3
 
 
 def validate_github_commit_hash(commit_hash):

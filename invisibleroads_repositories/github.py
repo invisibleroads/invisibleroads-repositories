@@ -26,7 +26,7 @@ __all__ = [
     'get_github_user_nickname',
 ]
 GITHUB_URL_PATTERN = re.compile(
-    r'github.com[/:]([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)(?:\.git)?$')
+    r'github.com[/:]([a-zA-Z0-9-]+)/([a-zA-Z0-9-_]+)(?:\.git)?$')
 
 
 def download_github_repository(target_folder, github_url):

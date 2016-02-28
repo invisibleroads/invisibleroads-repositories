@@ -27,7 +27,7 @@ DESCRIPTION = '\n\n'.join(open(join(FOLDER, x)).read().strip() for x in [
     'README.rst', 'CHANGES.rst'])
 setup(
     name='invisibleroads-repositories',
-    version='0.1.2',
+    version='0.1.3',
     description='Functions for managing code repositories',
     long_description=DESCRIPTION,
     classifiers=[

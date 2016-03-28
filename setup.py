@@ -1,25 +1,5 @@
 from os.path import abspath, dirname, join
 from setuptools import find_packages, setup
-from setuptools.command.test import test as TestCommand
-from sys import exit
-
-
-class PyTest(TestCommand):
-    user_options = [('pytest-args=', 'a', 'Arguments to pass to py.test')]
-
-    def initialize_options(self):
-        TestCommand.initialize_options(self)
-        self.pytest_args = []
-
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = []
-        self.test_suite = True
-
-    def run_tests(self):
-        import pytest
-        errno = pytest.main(self.pytest_args)
-        exit(errno)
 
 
 FOLDER = dirname(abspath(__file__))
@@ -41,11 +21,15 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
+    setup_requires=[
+        'pytest-runner',
+    ],
     install_requires=[
-        'invisibleroads-macros',
+        'invisibleroads_macros>=0.6.7',
         'pytz',
         'requests',
         'tzlocal',
     ],
-    tests_require=['pytest'],
-    cmdclass={'test': PyTest})
+    tests_require=[
+        'pytest',
+    ])
